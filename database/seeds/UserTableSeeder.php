@@ -14,10 +14,20 @@ class UserTableSeeder extends Seeder {
 	{
 		Model::unguard();
 		User::create(array(
-			'nama' => 'marketing', 
+			'nama' => 'Marketing', 
 			'username' => 'marketing', 
 			'password' => \Hash::make('marketing'), 
 			'role' => 'marketing'));
+		User::create(array(
+			'nama' => 'Operational', 
+			'username' => 'operational', 
+			'password' => \Hash::make('operational'), 
+			'role' => 'operational'));
+		User::create(array(
+			'nama' => 'Finance', 
+			'username' => 'finance', 
+			'password' => \Hash::make('finance'), 
+			'role' => 'finance'));
 	}
 
 }

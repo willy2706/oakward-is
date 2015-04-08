@@ -16,7 +16,7 @@ class CreateProdukTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nama');
-			$table->string('desrkipsi');
+			$table->string('deskripsi');
 			$table->integer('stok')->unsigned();
 			$table->string('harga');
 			$table->string('gambar');

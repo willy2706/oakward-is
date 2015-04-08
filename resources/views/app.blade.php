@@ -52,11 +52,11 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html">Produk</a>
+                    <li>
+                        <a href="{{url('produk')}}">Produk</a>
                     </li>
                     <li>
-                        <a href="charts.html">Pesanan</a>
+                        <a href="{{url('pesanan')}}">Pesanan</a>
                     </li>
                 </ul>
             </div>
@@ -64,21 +64,14 @@
         </nav>
         <div id="page-wrapper">
 
-            <!-- <div class="container-fluid"> -->
+            <div class="container-fluid">
+                @if (Session::has('alert'))
+                    
+                    <div class="alert alert-warning">
+                        {{Session::get('alert')}}
+                    </div>    
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <!-- <div class="col-lg-12"> -->
-<!--                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
-                        </h1> -->
-<!--                         <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol> -->
-                    <!-- </div> -->
-                </div>
+                @endif
 
                 @yield('content')
 

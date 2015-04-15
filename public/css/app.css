@@ -225,10 +225,14 @@ th {
   h3 {
     page-break-after: avoid;
   }
+ 
   select {
     background: #fff !important;
   }
-  .navbar {
+  . <div class="navbar-brand"> 
+            <img src = "{{ asset('/images/oakward.jpeg') }}" width="50px" height="50px">
+            <center> <font color="white" size="20pt"> Oakward </font> </center>
+            </div> bar {
     display: none;
   }
   .btn > .caret,
@@ -1033,7 +1037,7 @@ h3 .small,
   font-size: 65%;
 }
 h4,
-.h4,
+.h4 ,
 h5,
 .h5,
 h6,
@@ -1070,6 +1074,7 @@ h3,
 h4,
 .h4 {
   font-size: 18px;
+
 }
 h5,
 .h5 {
@@ -1386,6 +1391,7 @@ pre code {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
+  margin-top: auto;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -4632,7 +4638,6 @@ a.thumbnail.active {
   border-radius: 4px;
 }
 .alert h4 {
-  margin-top: 0;
   color: inherit;
 }
 .alert .alert-link {
@@ -4982,6 +4987,7 @@ a.list-group-item-danger.active:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
+  margin-top : 50px;
   padding: 15px;
 }
 .panel-heading {
@@ -5380,6 +5386,8 @@ button.close {
   border: 0;
   -webkit-appearance: none;
 }
+
+
 .modal-open {
   overflow: hidden;
 }

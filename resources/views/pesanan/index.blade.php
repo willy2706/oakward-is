@@ -14,6 +14,7 @@
                 <td>Nama</td>
                 <td>Alamat</td>
                 <td>Telepon</td>
+                <td>Status</td>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                 <td>{{$pesanan->nama}}</td>
                 <td>{{$pesanan->alamat}}</td>
                 <td>{{$pesanan->telepon}}</td>
+                <td>{{$pesanan->delivered ? 'delivered' : 'pending'}}</td>
                 <td>
                     <a href="{{url('pesanan/update/'.$pesanan->id)}}" class="btn btn-default">Edit</a>
                 </td>

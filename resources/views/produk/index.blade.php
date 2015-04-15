@@ -27,8 +27,9 @@
                 <td>{{$produk->harga}}</td>
                 <td>{{$produk->gambar}}</td>
                 <td>
-                    <a href="{{url('produk/update/'.$produk->id)}}" class="btn btn-default">Edit</a>
-					<!-- <a href="{{url('produk/delete/'.$produk->id)}}" class="btn btn-default">Delete</a> -->
+                    @if (!$produk->delivered)  
+                        <a href="{{url('produk/update/'.$produk->id)}}" class="btn btn-default">Edit</a>
+                    @endif
                 </td>
             </tr>
         @endforeach   

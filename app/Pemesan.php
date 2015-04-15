@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pesanan extends Model {
+class Pemesan extends Model {
 	protected $fillable = ['nama', 'alamat', 'telepon'];
 	protected $table = 'pemesan';
 	public $timestamps = false;

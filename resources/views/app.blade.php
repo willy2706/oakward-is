@@ -123,8 +123,6 @@
     <script src="{{ asset('/js/plugins/morris/raphael.min.js') }}"></script>
     <script src="{{ asset('/js/plugins/morris/morris.min.js') }}"></script>
     <script src="{{ asset('/js/plugins/morris/morris-data.min.js') }}"></script>
-    <script type="text/javascript">
-        @yield('script')
-    </script>
+    @yield('script')
 </body>
 </html>

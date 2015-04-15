@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
-use App\Pesanan;
+use App\Pemesan;
+use App\Memesan;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -31,36 +32,59 @@ class PesananController extends Controller {
 		// $pt = Pesanan::find(1);
 		// $px = $pt->user->nama;
 		// var_dump($px);
-		$p = Pesanan::all();
+		$p = Pemesan::all();
 		return view('pesanan.index')->withpesanans($p);
+	}
+
+	public function getView($id) {
+		$p = Pemesan::find($id);
+		$m = Memesan::where('id_pemesan', $id)->get();
+		return view('pesanan.view')->withpesanan($p)->withmemesans($m);
 	}
 
 	public function getCreate()
 	{
-		$pesanan = new Pesanan;
-		// return response('aaaaa');
+		$pesanan = new Pemesan;
 		return view('pesanan.create')->withpesanan($pesanan);
 	}
 
 	public function postCreate(Request $request) {
 		$r = $request->all();
-		$pesanan = new Pesanan;
+		$pesanan = new Pemesan;
 		$pesanan->fill($r);
 		$pesanan->id_marketing = Auth::user()->id;
 		$pesanan->save();
+		for ($i=1; $i<count($request['id_produk']); $i++) {
+			$memesan = new Memesan;
+			$memesan->id_pemesan = $pesanan->id;
+			$memesan->id_produk = $request['id_produk'][$i];
+			// $memesan->tanggal = ;
+			$memesan->jumlah = $request['jumlah_' . $i];
+			$memesan->save();
+		}
 		return Redirect::to('pesanan')->withalert('pesanan berhasil ditambahkan');
 	}
 
 	public function getUpdate($id) {
-		$pesanan = Pesanan::find($id);
-		return view('pesanan.create')->withpesanan($pesanan);
+		$pesanan = Pemesan::find($id);
+		$memesan = Memesan::where('id_pemesan', $id)->get();
+		return view('pesanan.create')->withpesanan($pesanan)->withmemesan($memesan);
 	}
 
 	public function postUpdate($id, Request $request) {
 		// return response($request->all());
-		$pesanan = Pesanan::find($id);
+		$pesanan = Pemesan::find($id);
 		$pesanan->fill($request->all());
 		$pesanan->save();
+		$memesan->where('id_produk', $id)->delete();
+		for ($i=1; $i<count($request['id_produk']); $i++) {
+			$memesan = new Memesan;
+			$memesan->id_pemesan = $pesanan->id;
+			$memesan->id_produk = $request['id_produk'][$i];
+			// $memesan->tanggal = ;
+			$memesan->jumlah = $request['jumlah_' . $i];
+			$memesan->save();
+		}
 		return Redirect::to('pesanan')->withalert('pesanan berhasil diubah');
 	}
 }

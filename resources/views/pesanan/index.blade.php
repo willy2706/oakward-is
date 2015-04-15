@@ -27,11 +27,12 @@
                 <td>{{$pesanan->telepon}}</td>
                 <td>{{$pesanan->delivered ? 'delivered' : 'pending'}}</td>
                 <td>
+                    <a href="{{url('pesanan/view/'.$pesanan->id)}}" class="btn btn-default">View</a>
                     <a href="{{url('pesanan/update/'.$pesanan->id)}}" class="btn btn-default">Edit</a>
                 </td>
             </tr>
         @endforeach   
-        </tbody>     
+        </tbody>
     
     </table>
 

@@ -43,6 +43,16 @@
                             <td class="col-sm-8">Barang</td>
                             <td>Jumlah</td>
                         </tr>
+						@foreach ($memesan as $m)
+						<tr>
+                            <td class="col-sm-8">
+                                {!!Form::select('id_produk[]',App\Produk::lists('nama', 'id'), $m->id_produk)!!}
+                            </td>
+                            <td>
+                                <textarea name="jumlah[]" rows="1" placeholder="" class="form-control">{{$m->jumlah}}</textarea>
+                            </td>
+                        </tr>
+						@endforeach
                         <tr class = "hidden">
                             <td class="col-sm-8" id="isiproduk">
                                 {!!Form::select('id_produk[]',App\Produk::lists('nama', 'id'))!!}
@@ -68,7 +78,7 @@
 
 @section('script')
 <script type="text/javascript">
-    addPesanan();
+    // addPesanan();
 
     function addPesanan() {
         var table = document.getElementById('pesanan');

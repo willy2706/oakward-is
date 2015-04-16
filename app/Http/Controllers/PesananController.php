@@ -60,7 +60,7 @@ class PesananController extends Controller {
 			$memesan->id_pemesan = $pesanan->id;
 			$memesan->id_produk = $request['id_produk'][$i];
 			$memesan->tanggal = Carbon::now();
-			$memesan->jumlah = $request['jumlah_' . $i];
+			$memesan->jumlah = $request['jumlah'][$i-1];
 			$memesan->save();
 		}
 		return Redirect::to('pesanan')->withalert('pesanan berhasil ditambahkan');
@@ -69,11 +69,12 @@ class PesananController extends Controller {
 	public function getUpdate($id) {
 		$pesanan = Pemesan::find($id);
 		$memesan = Memesan::where('id_pemesan', $id)->get();
-		return view('pesanan.create')->withpesanan($pesanan)->withmemesan($memesan);
+		//return response($memesan);
+		return view('pesanan.update')->withpesanan($pesanan)->withmemesan($memesan);
 	}
 
 	public function postUpdate($id, Request $request) {
-		// return response($request->all());
+		//return response($request->all());
 		$pesanan = Pemesan::find($id);
 		$pesanan->fill($request->all());
 		$pesanan->save();
@@ -86,7 +87,7 @@ class PesananController extends Controller {
 			$memesan->id_pemesan = $pesanan->id;
 			$memesan->id_produk = $request['id_produk'][$i];
 			$memesan->tanggal = Carbon::now();
-			$memesan->jumlah = $request['jumlah_' . $i];
+			$memesan->jumlah = $request['jumlah'][$i-1];
 			$memesan->save();
 		}
 		return Redirect::to('pesanan')->withalert('pesanan berhasil diubah');

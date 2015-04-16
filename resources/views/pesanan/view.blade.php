@@ -21,6 +21,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-sm-2">Status Pemesan</label>
+        <div class="col-sm-10">
+            {{$pesanan->status}}
+        </div>
+    </div>
+    <div class="form-group">
     <label class="col-sm-2">Barang Pesanan</label>
     </div>
     <div class="form-group">

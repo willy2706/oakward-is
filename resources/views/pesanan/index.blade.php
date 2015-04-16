@@ -48,7 +48,7 @@
                 <td>{{$pesanan->nama}}</td>
                 <td>{{$pesanan->alamat}}</td>
                 <td>{{$pesanan->telepon}}</td>
-                <td>{{$pesanan->delivered ? 'delivered' : 'pending'}}</td>
+                <td>{{$pesanan->status}} </td>
                 <td>
                     <a href="{{url('pesanan/view/'.$pesanan->id)}}" class="btn btn-default">View</a>
                     @if (!$pesanan->delivered)

@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Pemesan extends Model {
-	protected $fillable = ['nama', 'alamat', 'telepon'];
+	protected $fillable = ['nama', 'alamat', 'telepon', 'status'];
 	protected $table = 'pemesan';
 	public $timestamps = false;
 	public function user() {

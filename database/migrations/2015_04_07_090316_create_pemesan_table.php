@@ -20,6 +20,7 @@ class CreatePemesanTable extends Migration {
 			$table->string('nama');
 			$table->string('alamat');
 			$table->string('telepon');
+			$table->string('status');
 		});
 	}
 

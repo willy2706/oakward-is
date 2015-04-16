@@ -75,6 +75,20 @@ class ProdukController extends Controller {
 		return Redirect::to('produk')->withalert('produk berhasil diubah');
 	}
 
+	public function getSearch(Request $request) {
+		$k = $request->all()['keyword'];
+		if ($k == null) $k = '';
+		$key = '%'.$k.'%';
+		$p = Produk::where('id','LIKE', $key)
+				   ->orWhere('nama','LIKE', $key)
+				   ->orWhere('deskripsi', 'LIKE', $key)
+				   ->orWhere('stok', 'LIKE', $key)
+				   ->orWhere('harga', 'LIKE', $key)
+				   ->get();
+		return view('produk.index')->withproduks($p);
+		// return response('ok');
+	}
+
 	// public function getDelete($id, Request $request) {
 	// 	$produk = Produk::find($id);
 	// 	$produk->delete();

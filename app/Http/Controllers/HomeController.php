@@ -34,14 +34,4 @@ class HomeController extends Controller {
 	{
 		return new RedirectResponse(url('produk'));
 	}
-
-	public function search(Request $request) {
-		$k = $request->all()['keyword'];
-		if ($k == null) $k = '';
-		// return response($k);
-		$p = Pemesan::where('nama','LIKE', '%'.$k.'%')->get();
-		return view('pesanan.index')->withpesanans($p);
-		return response('ok');
-	}
-
 }

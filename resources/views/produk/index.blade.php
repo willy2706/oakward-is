@@ -7,9 +7,9 @@
 	@endif
 	<ul class="nav navbar-right">
              <li>
-                    <form action="{{url('search')}}" method="get">
+                    <form action="{{url('produk/search')}}" method="get">
                         <br>
-                        <input type="text" name="keyword" placeholder = "search order">
+                        <input type="text" name="keyword" placeholder = "search product">
                         <input type="submit" value="Search">
                     </form>
                 </li>

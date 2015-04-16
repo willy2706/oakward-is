@@ -8,7 +8,7 @@
 		
 		<ul class="nav navbar-right">
              <li>
-                    <form action="{{url('search')}}" method="get">
+                    <form action="{{url('/pesanan/search')}}" method="get">
                         <br>
                         <input type="text" name="keyword" placeholder = "search order">
                         <input type="submit" value="Search">
@@ -18,17 +18,6 @@
     </ul>
 		
     </div>
-	
-	
-	
-
-	
-	
-	
-	
-	
-				
-
     <table class="table">
         <thead>
             <tr>

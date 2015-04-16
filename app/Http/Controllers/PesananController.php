@@ -92,4 +92,20 @@ class PesananController extends Controller {
 		}
 		return Redirect::to('pesanan')->withalert('pesanan berhasil diubah');
 	}
+
+	public function getSearch(Request $request) {
+		$k = $request->all()['keyword'];
+		if ($k == null) $k = '';
+		$key = '%'.$k.'%';
+		// $p = Pemesan::wherenama('LIKE', '%'.$k.'%')->get();
+		$p = Pemesan::whereHas('user', function($q) use ($key) {
+			$q->where('nama', 'LIKE', $key);
+		})->orWhere('id','LIKE', $key)
+		  ->orWhere('nama','LIKE', $key)
+		  ->orWhere('alamat', 'LIKE', $key)
+		  ->orWhere('telepon', 'LIKE', $key)
+		  ->get();
+		return view('pesanan.index')->withpesanans($p);
+		return response('ok');
+	}
 }

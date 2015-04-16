@@ -1,11 +1,22 @@
 @extends('app')
 
 @section('content')
+	<div>
     @if (Auth::user()->isOperational())
-    <div>
         <a href="{{url('produk/create')}}" class="btn btn-primary">Create</a> 
+	@endif
+	<ul class="nav navbar-right">
+             <li>
+                    <form action="{{url('search')}}" method="get">
+                        <br>
+                        <input type="text" name="keyword" placeholder = "search order">
+                        <input type="submit" value="Search">
+                    </form>
+                </li>
+
+    </ul>
     </div>
-    @endif
+    
     <br>
 
     <table class="table">

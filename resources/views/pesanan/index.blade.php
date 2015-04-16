@@ -5,8 +5,29 @@
         @if(Auth::user()->isMarketing())
         <a href="{{url('pesanan/create')}}" class="btn btn-primary">Create</a> 
         @endif
+		
+		<ul class="nav navbar-right">
+             <li>
+                    <form action="{{url('search')}}" method="get">
+                        <br>
+                        <input type="text" name="keyword" placeholder = "search order">
+                        <input type="submit" value="Search">
+                    </form>
+                </li>
+
+    </ul>
+		
     </div>
-    <br>
+	
+	
+	
+
+	
+	
+	
+	
+	
+				
 
     <table class="table">
         <thead>

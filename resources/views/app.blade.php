@@ -54,15 +54,7 @@
             </div>
 
 
-            <ul class="nav navbar-right top-nav">
-
-                <li>
-                    <form action="{{url('search')}}" method="get">
-                        <br>
-                        <input type="text" name="keyword" placeholder = "search order">
-                        <input type="submit" value="Search">
-                    </form>
-                </li>
+            <ul class="nav navbar-right top-nav">              
                 <li class="dropdown">
 	                @if(Auth::check())
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->nama}} <b class="caret"></b></a>

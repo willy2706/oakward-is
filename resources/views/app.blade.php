@@ -57,9 +57,9 @@
             <ul class="nav navbar-right top-nav">
 
                 <li>
-                    <form action="" method="get">
+                    <form action="{{url('search')}}" method="get">
                         <br>
-                        <input type="text" name="search">
+                        <input type="text" name="keyword" placeholder = "search order">
                         <input type="submit" value="Search">
                     </form>
                 </li>

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-
+use App\Pemesan;
 class HomeController extends Controller {
 
 	/*
@@ -31,9 +32,16 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		// return response('aaa');
 		return new RedirectResponse(url('produk'));
-		// return view('home');
+	}
+
+	public function search(Request $request) {
+		$k = $request->all()['keyword'];
+		if ($k == null) $k = '';
+		// return response($k);
+		$p = Pemesan::where('nama','LIKE', '%'.$k.'%')->get();
+		return view('pesanan.index')->withpesanans($p);
+		return response('ok');
 	}
 
 }

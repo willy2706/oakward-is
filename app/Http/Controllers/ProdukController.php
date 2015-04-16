@@ -39,9 +39,18 @@ class ProdukController extends Controller {
 	}
 
 	public function postCreate(Request $request) {
+		// var_dump();exit;
+		// return response($request->file('foto'));
 		$r = $request->all();
 		$produk = new Produk;
 		$produk->fill($r);
+		if (\Request::hasFile('foto')) {
+			$ext = \Request::file('foto')->getClientOriginalExtension();
+			$dest = public_path() . '/foto/';
+			$filename = 'produk_' . time() . '.' . $ext;
+			\Request::file('foto')->move($dest, $filename);
+			$produk->gambar = '/foto/'.$filename;
+		}
 		$produk->save();
 		return Redirect::to('produk')->withalert('produk berhasil ditambahkan');
 	}
@@ -55,6 +64,13 @@ class ProdukController extends Controller {
 		// return response($request->all());
 		$produk = Produk::find($id);
 		$produk->fill($request->all());
+		if (\Request::hasFile('foto')) {
+			$ext = \Request::file('foto')->getClientOriginalExtension();
+			$dest = public_path() . '/foto/';
+			$filename = 'produk_' . time() . '.' . $ext;
+			\Request::file('foto')->move($dest, $filename);
+			$produk->gambar = '/foto/'.$filename;
+		}
 		$produk->save();
 		return Redirect::to('produk')->withalert('produk berhasil diubah');
 	}

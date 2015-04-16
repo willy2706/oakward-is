@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <form id = "creationForm" class="form-horizontal" role="form" method="post">
+    <form id = "creationForm" class="form-horizontal"  enctype="multipart/form-data" role="form" method="post">
 
         <div class="form-group">
             <label class="col-sm-2 control-label">Nama</label>
@@ -33,7 +33,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Gambar</label>
             <div class="col-sm-10">
-                <textarea name="gambar" id="" rows="1" placeholder="Gambar" class="form-control">{{$produk->gambar}}</textarea>
+                <input type="file" id="foto" name="foto" >
             </div>
         </div>
         

@@ -9,4 +9,7 @@ class Pemesan extends Model {
 	public function user() {
 		return $this->belongsTo('App\User','id_marketing','id');
 	}
+	public function memesan() {
+		return $this->hasMany('App\Memesan', 'id_pemesan', 'id');
+	}
 }

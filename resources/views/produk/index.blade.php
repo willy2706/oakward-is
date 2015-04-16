@@ -25,7 +25,7 @@
                 <td>{{$produk->deskripsi}}</td>
                 <td>{{$produk->stok}}</td>
                 <td>{{$produk->harga}}</td>
-                <td>{{$produk->gambar}}</td>
+                <td><img src="{{asset($produk->gambar)}}" alt=""></td>
                 <td>
                     @if (!$produk->delivered)  
                         <a href="{{url('produk/update/'.$produk->id)}}" class="btn btn-default">Edit</a>

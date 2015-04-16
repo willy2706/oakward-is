@@ -2,7 +2,9 @@
 
 @section('content')
     <div>
+        @if(Auth::user()->isMarketing())
         <a href="{{url('pesanan/create')}}" class="btn btn-primary">Create</a> 
+        @endif
     </div>
     <br>
 
@@ -28,7 +30,9 @@
                 <td>{{$pesanan->delivered ? 'delivered' : 'pending'}}</td>
                 <td>
                     <a href="{{url('pesanan/view/'.$pesanan->id)}}" class="btn btn-default">View</a>
+                    @if (!$pesanan->delivered)
                     <a href="{{url('pesanan/update/'.$pesanan->id)}}" class="btn btn-default">Edit</a>
+                    @endif
                 </td>
             </tr>
         @endforeach   

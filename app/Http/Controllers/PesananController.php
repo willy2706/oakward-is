@@ -77,7 +77,10 @@ class PesananController extends Controller {
 		$pesanan = Pemesan::find($id);
 		$pesanan->fill($request->all());
 		$pesanan->save();
-		$memesan->where('id_produk', $id)->delete();
+		$m = Memesan::whereid_pemesan($id)->get();
+		foreach ($m as $key => $value) {
+			$m[$key]->delete();
+		}
 		for ($i=1; $i<count($request['id_produk']); $i++) {
 			$memesan = new Memesan;
 			$memesan->id_pemesan = $pesanan->id;

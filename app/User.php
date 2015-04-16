@@ -31,17 +31,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function isOperational() {
-		return count($this->operational()->get()) > 0;
-	}
 
 	public function scopeOperational($query) {
 		return $query->whereRole('operational');
 	}
 
-
 	public function scopeMarketing($query) {
 		return $query->whereRole('operational');
 	}
 
+	public function isOperational() {
+		return $this->role == 'operational';
+	}
+
+	public function isMarketing() {
+		return $this->role == 'marketing';
+	}
+
+	public function isFinance() {
+		return $this->role == 'finance';
+	}
 }

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Carbon\Carbon;
 class PesananController extends Controller {
 
 	/*
@@ -58,7 +59,7 @@ class PesananController extends Controller {
 			$memesan = new Memesan;
 			$memesan->id_pemesan = $pesanan->id;
 			$memesan->id_produk = $request['id_produk'][$i];
-			// $memesan->tanggal = ;
+			$memesan->tanggal = Carbon::now();
 			$memesan->jumlah = $request['jumlah_' . $i];
 			$memesan->save();
 		}
@@ -81,7 +82,7 @@ class PesananController extends Controller {
 			$memesan = new Memesan;
 			$memesan->id_pemesan = $pesanan->id;
 			$memesan->id_produk = $request['id_produk'][$i];
-			// $memesan->tanggal = ;
+			$memesan->tanggal = Carbon::now();
 			$memesan->jumlah = $request['jumlah_' . $i];
 			$memesan->save();
 		}

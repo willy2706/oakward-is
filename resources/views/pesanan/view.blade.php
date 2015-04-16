@@ -34,7 +34,7 @@
                     </tr>
                     @foreach ($memesans as $memesan)
                     <tr>
-                        <td>{{$memesan->id_produk}}</td>
+                        <td>{{$memesan->produk->nama}}</td>
                         <td>{{$memesan->tanggal}}</td>
                         <td>{{$memesan->jumlah}}</td>
                     </tr>
